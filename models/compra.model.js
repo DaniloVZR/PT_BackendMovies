@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
 
 const CompraSchema = mongoose.Schema({
   id_pedido: {
@@ -32,4 +32,4 @@ const CompraSchema = mongoose.Schema({
 
 const Compra = mongoose.model('Compra', CompraSchema);
 
-module.exports = Compra;
+export default Compra;

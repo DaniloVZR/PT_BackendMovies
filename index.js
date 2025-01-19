@@ -1,28 +1,24 @@
-require('dotenv').config();
-const express = require('express');
-const mongoose = require('mongoose');
-const cors = require('cors');
-const app = express();
-const compraRoute = require("./routes/compra.route")
+import dotenv from "dotenv";
+import express from "express";
+import cors from "cors";
+import conectarDB from "./config/db.js"
+import compraRoute from "./routes/compra.route.js";
 
-const port = process.env.PORT || 3000
-const mongodbConnection = process.env.MONGODB_URI
+const app = express();
+
+const port = process.env.PORT || 4000
+
+dotenv.config();
+conectarDB();
 
 // Middleware
 app.use(cors());
 app.use(express.json());
 
+// Conexión
 // rutas
 app.use('/api', compraRoute);
 
-// Conexión
-mongoose.connect(mongodbConnection)
-  .then(() => {
-    console.log('Conectado a la base de datos');
-    app.listen(port, () => (
-      console.log(`Server is running on port ${port}`)
-    ));
-  })
-  .catch(() => {
-    console.log('Error al conectar a la base de datos')
-  })
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
+})

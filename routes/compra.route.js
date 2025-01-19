@@ -1,14 +1,14 @@
-const express = require("express");
+import express from "express";
 const router = express.Router();
-const {
+import {
   CrearCompras,
   ObtenerCompras,
   ObtenerCompra,
-} = require("../controllers/compra.controller.js");
+} from "../controllers/compra.controller.js";
 
 router.get('/compras', ObtenerCompras);
 router.get('/compras/:id', ObtenerCompra);
 
 router.post('/compras', CrearCompras);
 
-module.exports = router;
+export default router;

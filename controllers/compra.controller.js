@@ -1,4 +1,4 @@
-const Compra = require("../models/compra.model.js");
+import Compra from "../models/compra.model.js";
 
 const CrearCompras = async (req, res) => {
   try {
@@ -31,7 +31,7 @@ const ObtenerCompra = async (req, res) => {
   }
 }
 
-module.exports = {
+export {
   CrearCompras,
   ObtenerCompras,
   ObtenerCompra
